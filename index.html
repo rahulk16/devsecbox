@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Base64 Encoder & Decoder Online - Free Tool</title>
+
+		<meta
+			name="description"
+			content="Free online Base64 encoder and decoder. Encode text to Base64 or decode Base64 strings instantly in your browser. Fast, private and easy to use." />
+
+		<meta
+			name="keywords"
+			content="Base64 encoder, Base64 decoder, Base64 encode, Base64 decode, online Base64 tool" />
+
+		<meta name="robots" content="index, follow" />
+
+		<meta name="author" content="Your Website Name" />
+
+		<!-- We'll replace this with your real domain before deployment -->
+		<!-- <link rel="canonical" href="https://YOUR-DOMAIN.com/" /> -->
+
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<section class="seo-content">
+			<h2>Base64 Encoder and Decoder</h2>
+
+			<p>
+				This free online Base64 encoder and decoder lets you encode text into
+				Base64 and decode Base64 strings back into readable text. Everything is
+				processed directly in your browser, so your input is not uploaded to a
+				server.
+			</p>
+
+			<h2>What is Base64?</h2>
+
+			<p>
+				Base64 is an encoding method that represents binary data using a set of
+				ASCII characters. It is commonly used when binary data needs to be
+				represented as text, such as in APIs, email, web applications and data
+				transmission.
+			</p>
+
+			<h2>How to encode text to Base64</h2>
+
+			<ol>
+				<li>Choose the <strong>Encode</strong> option.</li>
+				<li>Enter your text in the input box.</li>
+				<li>The Base64 result is generated automatically.</li>
+				<li>Click <strong>Copy</strong> to copy the result.</li>
+			</ol>
+
+			<h2>How to decode Base64</h2>
+
+			<ol>
+				<li>Choose the <strong>Decode</strong> option.</li>
+				<li>Enter your Base64 string.</li>
+				<li>The decoded text will appear automatically.</li>
+				<li>Click <strong>Copy</strong> to copy the decoded result.</li>
+			</ol>
+
+			<h2>Is Base64 encryption?</h2>
+
+			<p>
+				No. Base64 is encoding, not encryption. Base64 encoded data can be
+				decoded easily and should not be used to protect passwords, tokens or
+				other sensitive information.
+			</p>
+		</section>
+		<div class="wrap">
+			<div class="eyebrow">Text ⇄ Base64</div>
+			<h1>Base64 encoder / decoder</h1>
+			<p class="sub">
+				Convert text to Base64 or back again — everything runs locally in your
+				browser.
+			</p>
+
+			<div class="card">
+				<div class="mode-row">
+					<button
+						class="mode-btn active"
+						id="modeEncode"
+						onclick="setMode('encode')">
+						Encode
+					</button>
+					<button class="mode-btn" id="modeDecode" onclick="setMode('decode')">
+						Decode
+					</button>
+				</div>
+
+				<div class="field">
+					<div class="field-label"><span id="inputLabel">Input text</span></div>
+					<textarea
+						id="input"
+						placeholder="Enter text here…"
+						spellcheck="false"></textarea>
+				</div>
+
+				<div class="rail" id="rail" aria-hidden="true"></div>
+
+				<div class="field">
+					<div class="field-label">
+						<span id="outputLabel">Result</span>
+					</div>
+					<div class="output empty" id="output" tabindex="0">
+						Result will appear here
+					</div>
+				</div>
+
+				<div class="actions">
+					<div class="btn-group">
+						<button class="act primary" id="runBtn" onclick="run()" hidden>
+							Encode
+						</button>
+						<button class="act" onclick="clearAll()">Clear</button>
+					</div>
+					<button class="act copy" id="copyBtn" onclick="copyOutput()">
+						Copy
+					</button>
+				</div>
+			</div>
+
+			<div class="meta" style="justify-content: center; margin-top: 14px">
+				<span id="charCount">Characters: 0</span>
+				<span id="byteCount">Bytes: 0</span>
+			</div>
+
+			<p class="footer-note">Nothing you type ever leaves this page.</p>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
