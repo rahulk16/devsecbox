@@ -199,7 +199,6 @@ async function copyOutput() {
 	) {
 		return;
 	}
-
 	try {
 		// Modern Clipboard API
 		if (navigator.clipboard && window.isSecureContext) {

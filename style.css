@@ -293,7 +293,6 @@ button.act.copy.copied {
 .seo-content strong {
 	color: var(--ink);
 }
-
 @media (max-width: 768px) {
 	.content-layout {
 		grid-template-columns: 1fr;
