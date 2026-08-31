@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://base64-tool.rahul162rk.workers.dev/sitemap.xml
