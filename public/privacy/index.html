@@ -79,13 +79,19 @@
 
 		<footer>
 			<span class="footer-copy"
-				>© 2026 DevSecBox — developer &amp; security utilities for everyday
-				engineering work.</span
+				>© <span id="year"></span> DevSecBox — developer &amp; security
+				utilities for everyday engineering work.</span
 			>
 			<div class="footer-links">
+				<a href="/about/">About</a>
+				<a href="/contact/">Contact</a>
 				<a href="/privacy/">Privacy Policy</a>
 				<a href="/terms/">Terms of Service</a>
 			</div>
 		</footer>
+
+		<script>
+			document.getElementById("year").textContent = new Date().getFullYear();
+		</script>
 	</body>
 </html>
