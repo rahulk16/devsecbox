@@ -8,24 +8,168 @@
 
 		<meta
 			name="description"
-			content="Free online developer and cybersecurity tools including Base64 encoder, JWT decoder, JSON formatter and more." />
+			content="Free online developer and cybersecurity tools including Base64 encoder, JWT decoder, JSON formatter and more. Everything runs in your browser — nothing is uploaded." />
+
+		<meta
+			name="keywords"
+			content="developer tools, security tools, Base64 encoder, JWT decoder, JSON formatter, hash generator, CIDR calculator, online dev tools" />
 
 		<meta name="robots" content="index, follow" />
+		<meta name="author" content="DevSecBox" />
 
 		<link rel="canonical" href="https://devsecbox.fyi/" />
+
+		<link rel="stylesheet" href="style.css" />
 	</head>
 
 	<body>
-		<h1>DevSecBox</h1>
+		<nav class="nav">
+			<a href="/" class="brand">DevSecBox</a>
+		</nav>
 
-		<p>Free developer & security tools.</p>
+		<section class="hero">
+			<div class="eyebrow">Free & browser-based</div>
+			<h1>Developer &amp; security tools,<br />no install required</h1>
+			<p>
+				Simple browser-based utilities for developers and security engineers.
+				Nothing you enter ever leaves your browser.
+			</p>
 
-		<h2>Tools</h2>
+			<div class="search-wrap">
+				<svg
+					width="16"
+					height="16"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round">
+					<circle cx="11" cy="11" r="8"></circle>
+					<line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+				</svg>
+				<input
+					type="text"
+					id="searchInput"
+					placeholder="Search tools..."
+					autocomplete="off" />
+			</div>
+		</section>
 
-		<ul>
-			<li>
-				<a href="/base64/">Base64 Encoder & Decoder</a>
-			</li>
-		</ul>
+		<section class="tools" id="toolsGrid">
+			<a
+				class="tool-card live"
+				href="/base64/"
+				data-name="Base64 Encoder & Decoder"
+				data-desc="Encode and decode Base64 text">
+				<div class="tool-top">
+					<span class="tool-name">Base64 Encoder & Decoder</span>
+				</div>
+				<p class="tool-desc">
+					Encode and decode Base64 text instantly, right in your browser.
+				</p>
+				<span class="tool-action">
+					Open Tool
+					<svg
+						width="14"
+						height="14"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round">
+						<line x1="5" y1="12" x2="19" y2="12"></line>
+						<polyline points="12 5 19 12 12 19"></polyline>
+					</svg>
+				</span>
+			</a>
+
+			<div
+				class="tool-card disabled"
+				data-name="JWT Decoder"
+				data-desc="Decode and inspect JSON Web Tokens">
+				<div class="tool-top">
+					<span class="tool-name">JWT Decoder</span>
+					<span class="badge soon">Coming Soon</span>
+				</div>
+				<p class="tool-desc">
+					Decode and inspect JSON Web Tokens — header, payload, and signature.
+				</p>
+			</div>
+
+			<div
+				class="tool-card disabled"
+				data-name="JSON Formatter"
+				data-desc="Format and validate JSON data">
+				<div class="tool-top">
+					<span class="tool-name">JSON Formatter</span>
+					<span class="badge soon">Coming Soon</span>
+				</div>
+				<p class="tool-desc">
+					Pretty-print, validate, and minify JSON in one click.
+				</p>
+			</div>
+
+			<div
+				class="tool-card disabled"
+				data-name="Hash Generator"
+				data-desc="Generate MD5 SHA1 SHA256 hashes">
+				<div class="tool-top">
+					<span class="tool-name">Hash Generator</span>
+					<span class="badge soon">Coming Soon</span>
+				</div>
+				<p class="tool-desc">
+					Generate MD5, SHA-1, and SHA-256 hashes from text or files.
+				</p>
+			</div>
+
+			<div
+				class="tool-card disabled"
+				data-name="CIDR Calculator"
+				data-desc="Calculate subnet ranges and IP blocks">
+				<div class="tool-top">
+					<span class="tool-name">CIDR Calculator</span>
+					<span class="badge soon">Coming Soon</span>
+				</div>
+				<p class="tool-desc">
+					Calculate subnet ranges, host counts, and IP blocks from CIDR
+					notation.
+				</p>
+			</div>
+		</section>
+
+		<p class="no-results" id="noResults">No tools match your search.</p>
+
+		<section class="seo-content">
+			<h2>Free Developer &amp; Security Tools</h2>
+			<p>
+				DevSecBox is a collection of free, browser-based utilities for
+				developers and security engineers. Every tool runs entirely on the
+				client side, so text and files you enter are processed locally and never
+				uploaded to a server.
+			</p>
+
+			<h2>Why use browser-based tools?</h2>
+			<p>
+				Because everything runs in your browser, DevSecBox tools are fast, work
+				offline once loaded, and keep your data private — nothing you paste or
+				type is transmitted or stored anywhere. This makes them safe to use even
+				with sensitive tokens, keys, or internal data.
+			</p>
+		</section>
+
+		<footer>
+			<span class="footer-copy"
+				>© <span id="year"></span> DevSecBox — developer &amp; security
+				utilities for everyday engineering work.</span
+			>
+			<div class="footer-links">
+				<a href="/privacy/">Privacy Policy</a>
+				<a href="/terms/">Terms of Service</a>
+			</div>
+		</footer>
+
+		<script src="script.js"></script>
 	</body>
 </html>

@@ -1,0 +1,326 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/JetBrains-Mono/2.304/css/jetbrains-mono.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+:root {
+	--bg: #f5f4f0;
+	--panel: #ffffff;
+	--ink: #16171a;
+	--muted: #7d8085;
+	--line: #e3e1da;
+	--accent: #4f46e5;
+	--accent-ink: #ffffff;
+	--good: #1e8e5a;
+	--radius: 10px;
+}
+
+* {
+	box-sizing: border-box;
+}
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background: var(--bg);
+	background-image:
+		linear-gradient(var(--line) 1px, transparent 1px),
+		linear-gradient(90deg, var(--line) 1px, transparent 1px);
+	background-size: 28px 28px;
+	background-position: -1px -1px;
+	color: var(--ink);
+	font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+	min-height: 100vh;
+}
+
+a {
+	color: inherit;
+}
+
+/* ---------- top nav ---------- */
+.nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 920px;
+	margin: 0 auto;
+	padding: 22px 20px 0;
+}
+.brand {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-weight: 700;
+	font-size: 17px;
+	text-decoration: none;
+	letter-spacing: -0.01em;
+}
+.brand::before {
+	content: "";
+	width: 9px;
+	height: 9px;
+	background: var(--accent);
+	display: inline-block;
+	border-radius: 2px;
+	transform: rotate(45deg);
+}
+.nav a.navlink {
+	font-family: "JetBrains Mono", monospace;
+	font-size: 13px;
+	text-decoration: none;
+	color: var(--muted);
+}
+.nav a.navlink:hover {
+	color: var(--ink);
+}
+
+/* ---------- hero ---------- */
+.hero {
+	max-width: 720px;
+	margin: 0 auto;
+	padding: 64px 20px 40px;
+	text-align: center;
+}
+.eyebrow {
+	font-family: "JetBrains Mono", monospace;
+	font-size: 12px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--muted);
+	margin-bottom: 14px;
+}
+.hero h1 {
+	font-size: 42px;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	margin: 0 0 14px;
+	line-height: 1.1;
+}
+.hero p {
+	color: var(--muted);
+	font-size: 16px;
+	max-width: 480px;
+	margin: 0 auto 28px;
+	line-height: 1.5;
+}
+
+.search-wrap {
+	max-width: 420px;
+	margin: 0 auto;
+	position: relative;
+}
+.search-wrap svg {
+	position: absolute;
+	left: 14px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: var(--muted);
+}
+#searchInput {
+	width: 100%;
+	font-family: "JetBrains Mono", monospace;
+	font-size: 13.5px;
+	padding: 12px 14px 12px 38px;
+	border-radius: 8px;
+	border: 1px solid var(--line);
+	background: #fff;
+	outline: none;
+	transition:
+		border-color 0.15s ease,
+		box-shadow 0.15s ease;
+}
+#searchInput:focus {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12);
+}
+
+/* ---------- tool grid ---------- */
+.tools {
+	max-width: 880px;
+	margin: 0 auto;
+	padding: 0 20px 20px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 14px;
+}
+@media (max-width: 640px) {
+	.tools {
+		grid-template-columns: 1fr;
+	}
+}
+
+.tool-card {
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	text-decoration: none;
+	color: inherit;
+	transition:
+		border-color 0.15s ease,
+		box-shadow 0.15s ease,
+		transform 0.15s ease;
+}
+.tool-card.live:hover {
+	border-color: #c9c7be;
+	box-shadow: 0 8px 22px -14px rgba(20, 20, 20, 0.25);
+	transform: translateY(-1px);
+}
+.tool-card.disabled {
+	opacity: 0.55;
+}
+
+.tool-top {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 8px;
+}
+.tool-name {
+	font-weight: 600;
+	font-size: 16px;
+	letter-spacing: -0.01em;
+}
+.badge {
+	font-family: "JetBrains Mono", monospace;
+	font-size: 10.5px;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	padding: 3px 8px;
+	border-radius: 20px;
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+.badge.soon {
+	background: #f0efea;
+	color: var(--muted);
+	border: 1px solid var(--line);
+}
+
+.tool-desc {
+	color: var(--muted);
+	font-size: 13.5px;
+	line-height: 1.5;
+	flex: 1;
+}
+
+.tool-action {
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 600;
+	font-size: 13.5px;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	color: var(--accent);
+	padding-top: 4px;
+}
+.tool-action svg {
+	transition: transform 0.15s ease;
+}
+.tool-card.live:hover .tool-action svg {
+	transform: translateX(2px);
+}
+
+.no-results {
+	text-align: center;
+	color: var(--muted);
+	font-family: "JetBrains Mono", monospace;
+	font-size: 13px;
+	padding: 30px 20px;
+	display: none;
+}
+
+/* ---------- footer ---------- */
+footer {
+	max-width: 920px;
+	margin: 40px auto 0;
+	padding: 24px 20px 40px;
+	border-top: 1px solid var(--line);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+.footer-links {
+	display: flex;
+	gap: 18px;
+}
+.footer-links a {
+	font-family: "JetBrains Mono", monospace;
+	font-size: 12.5px;
+	text-decoration: none;
+	color: var(--muted);
+}
+.footer-links a:hover {
+	color: var(--ink);
+}
+.footer-copy {
+	font-family: "JetBrains Mono", monospace;
+	font-size: 12px;
+	color: var(--muted);
+}
+
+/* ---------- SEO content section ---------- */
+.seo-content {
+	max-width: 680px;
+	margin: 30px auto 0;
+	padding: 30px 20px 10px;
+	border-top: 1px solid var(--line);
+}
+.seo-content h2 {
+	font-size: 17px;
+	letter-spacing: -0.01em;
+	margin: 26px 0 8px;
+}
+.seo-content h2:first-child {
+	margin-top: 0;
+}
+.seo-content p,
+.seo-content li {
+	color: #3a3b3e;
+	font-size: 14px;
+	line-height: 1.65;
+}
+.seo-content ul {
+	padding-left: 20px;
+}
+.seo-content ol {
+	padding-left: 20px;
+}
+
+/* ---------- simple content pages (privacy/terms) ---------- */
+.doc {
+	max-width: 680px;
+	margin: 0 auto;
+	padding: 50px 20px 20px;
+}
+.doc h1 {
+	font-size: 28px;
+	letter-spacing: -0.02em;
+	margin-bottom: 6px;
+}
+.doc .updated {
+	font-family: "JetBrains Mono", monospace;
+	font-size: 12px;
+	color: var(--muted);
+	margin-bottom: 30px;
+}
+.doc h2 {
+	font-size: 17px;
+	margin-top: 34px;
+	margin-bottom: 8px;
+}
+.doc p,
+.doc li {
+	color: #3a3b3e;
+	font-size: 14.5px;
+	line-height: 1.65;
+}
+.doc a {
+	color: var(--accent);
+}
