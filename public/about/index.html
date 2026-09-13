@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>About — DevSecBox</title>
+		<meta
+			name="description"
+			content="DevSecBox is a free collection of browser-based developer and security tools. Learn who builds it and why." />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href="https://devsecbox.fyi/about/" />
+		<link rel="stylesheet" href="../style.css" />
+	</head>
+	<body>
+		<nav class="nav">
+			<a href="/" class="brand">DevSecBox</a>
+		</nav>
+
+		<main class="doc">
+			<h1>About DevSecBox</h1>
+			<p class="updated">Built by Rahul Kumar</p>
+
+			<p>
+				DevSecBox is a free collection of small, focused tools for developers
+				and security engineers — things like Base64 encoding, JWT decoding, and
+				JSON formatting that come up constantly in day-to-day engineering work
+				but don't deserve a heavyweight app.
+			</p>
+
+			<h2>Why it exists</h2>
+			<p>
+				Most "online tool" sites are cluttered, slow, or send your data to a
+				server you can't see. DevSecBox tools run entirely in your browser —
+				nothing you type or paste is uploaded anywhere — and are built to load
+				fast and get out of your way.
+			</p>
+
+			<h2>Who's behind it</h2>
+			<p>
+				DevSecBox is built and maintained by Rahul Kumar, a developer building
+				tools out of everyday engineering needs. The project is open source —
+				you can view the code, suggest tools, or report issues on
+				<a
+					href="https://github.com/rahulk16/devsecbox"
+					target="_blank"
+					rel="noopener"
+					>GitHub</a
+				>.
+			</p>
+
+			<h2>What's next</h2>
+			<p>
+				New tools are added over time — see the homepage for what's live and
+				what's coming soon. Have a tool you'd like to see? Reach out via the
+				<a href="/contact/">contact page</a>.
+			</p>
+		</main>
+
+		<footer>
+			<span class="footer-copy"
+				>© <span id="year"></span> DevSecBox — developer &amp; security
+				utilities for everyday engineering work.</span
+			>
+			<div class="footer-links">
+				<a href="/about/">About</a>
+				<a href="/contact/">Contact</a>
+				<a href="/privacy/">Privacy Policy</a>
+				<a href="/terms/">Terms of Service</a>
+			</div>
+		</footer>
+
+		<script>
+			document.getElementById("year").textContent = new Date().getFullYear();
+		</script>
+	</body>
+</html>
