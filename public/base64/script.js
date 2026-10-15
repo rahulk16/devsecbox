@@ -192,5 +192,9 @@ clearBtn.addEventListener("click", clearAll);
 copyBtn.addEventListener("click", copyOutput);
 input.addEventListener("input", run);
 
+// Footer year
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
 // Initialize
 run();

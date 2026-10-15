@@ -314,6 +314,37 @@ button:focus-visible {
 	color: var(--ink);
 }
 
+/* ---------- footer (matches the other pages) ---------- */
+footer {
+	margin: 60px auto 0;
+	padding: 24px 0 0;
+	border-top: 1px solid var(--line);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 12px;
+}
+.footer-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 18px;
+}
+.footer-links a {
+	font-family: "JetBrains Mono", monospace;
+	font-size: 12.5px;
+	text-decoration: none;
+	color: var(--muted);
+}
+.footer-links a:hover {
+	color: var(--ink);
+}
+.footer-copy {
+	font-family: "JetBrains Mono", monospace;
+	font-size: 12px;
+	color: var(--muted);
+}
+
 /* ---------- tablet & below: stack, tool first ---------- */
 @media (max-width: 900px) {
 	body {
@@ -379,6 +410,9 @@ button:focus-visible {
 	}
 	.seo-content h2 {
 		font-size: 18px;
+	}
+	footer {
+		margin-top: 40px;
 	}
 }
 
