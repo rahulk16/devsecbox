@@ -1,41 +1,12 @@
-/* Fonts are loaded via <link> in index.html */
+/*
+ * Base64 tool styles.
+ * Shared variables, reset, body, .brand, .nav, .eyebrow, .seo-content and
+ * footer styles come from /style.css (loaded first). This file only holds
+ * what is specific to this page, plus overrides of the shared rules.
+ */
 
-:root {
-	--bg: #f5f4f0;
-	--panel: #ffffff;
-	--ink: #16171a;
-	--muted: #7d8085;
-	--line: #e3e1da;
-	--accent: #4f46e5;
-	--accent-ink: #ffffff;
-	--good: #1e8e5a;
-	--error: #c0392b;
-	--radius: 10px;
-}
-
-* {
-	box-sizing: border-box;
-}
-html,
 body {
-	margin: 0;
-	padding: 0;
-}
-body {
-	background: var(--bg);
-	background-image:
-		linear-gradient(var(--line) 1px, transparent 1px),
-		linear-gradient(90deg, var(--line) 1px, transparent 1px);
-	background-size: 28px 28px;
-	background-position: -1px -1px;
-	color: var(--ink);
-	font-family: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-	min-height: 100vh;
 	padding: 40px 20px;
-}
-
-a {
-	color: inherit;
 }
 
 .wrap {
@@ -44,46 +15,15 @@ a {
 	margin: 0 auto;
 }
 
-/* ---------- top nav ---------- */
+/* ---------- top nav (overrides shared .nav sizing) ---------- */
 .topnav {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-bottom: 36px;
-}
-.brand {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	font-weight: 700;
-	font-size: 17px;
-	text-decoration: none;
-	letter-spacing: -0.01em;
-}
-.brand::before {
-	content: "";
-	width: 22px;
-	height: 22px;
-	background: url("/favicon.svg") center / contain no-repeat;
-	display: inline-block;
-}
-.navlink {
-	font-family: "JetBrains Mono", monospace;
-	font-size: 13px;
-	text-decoration: none;
-	color: var(--muted);
-}
-.navlink:hover {
-	color: var(--ink);
+	max-width: none;
+	margin: 0 0 36px;
+	padding: 0;
 }
 
 /* ---------- headings ---------- */
 .eyebrow {
-	font-family: "JetBrains Mono", monospace;
-	font-size: 12px;
-	letter-spacing: 0.12em;
-	text-transform: uppercase;
-	color: var(--muted);
 	margin-bottom: 10px;
 }
 
@@ -287,24 +227,22 @@ button:focus-visible {
 	order: 2; /* tool on the right on desktop */
 }
 
-/* ---------- explainer / SEO content ---------- */
+/* ---------- explainer (overrides shared .seo-content) ---------- */
 .seo-content {
 	order: 1; /* explainer on the left on desktop */
+	max-width: none;
+	margin: 0;
 	padding: 10px 4px 0;
+	border-top: none;
 }
 .seo-content h2 {
 	font-size: 20px;
 	font-weight: 700;
 	margin: 32px 0 10px;
-	letter-spacing: -0.01em;
-}
-.seo-content h2:first-child {
-	margin-top: 0;
 }
 .seo-content p,
 .seo-content li {
 	color: var(--muted);
-	font-size: 14px;
 	line-height: 1.7;
 }
 .seo-content ol {
@@ -314,35 +252,15 @@ button:focus-visible {
 	color: var(--ink);
 }
 
-/* ---------- footer (matches the other pages) ---------- */
+/* ---------- footer (overrides shared footer: stacked, left-aligned) ---------- */
 footer {
-	margin: 60px auto 0;
+	max-width: none;
+	margin: 60px 0 0;
 	padding: 24px 0 0;
-	border-top: 1px solid var(--line);
-	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	gap: 12px;
+	justify-content: flex-start;
 	text-align: left;
-}
-.footer-links {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 18px;
-}
-.footer-links a {
-	font-family: "JetBrains Mono", monospace;
-	font-size: 12.5px;
-	text-decoration: none;
-	color: var(--muted);
-}
-.footer-links a:hover {
-	color: var(--ink);
-}
-.footer-copy {
-	font-family: "JetBrains Mono", monospace;
-	font-size: 12px;
-	color: var(--muted);
 }
 
 /* ---------- tablet & below: stack, tool first ---------- */

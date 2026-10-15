@@ -1,5 +1,4 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/JetBrains-Mono/2.304/css/jetbrains-mono.min.css");
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+/* Fonts (Space Grotesk, JetBrains Mono) are loaded via <link> in each page */
 
 :root {
 	--bg: #f5f4f0;
@@ -10,6 +9,7 @@
 	--accent: #4f46e5;
 	--accent-ink: #ffffff;
 	--good: #1e8e5a;
+	--error: #c0392b;
 	--radius: 10px;
 }
 
@@ -246,6 +246,7 @@ footer {
 }
 .footer-links {
 	display: flex;
+	flex-wrap: wrap;
 	gap: 18px;
 }
 .footer-links a {
