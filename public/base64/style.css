@@ -320,10 +320,10 @@ footer {
 	padding: 24px 0 0;
 	border-top: 1px solid var(--line);
 	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-wrap: wrap;
+	flex-direction: column;
+	align-items: flex-start;
 	gap: 12px;
+	text-align: left;
 }
 .footer-links {
 	display: flex;
