@@ -55,12 +55,10 @@ body {
 }
 .eyebrow::before {
 	content: "";
-	width: 7px;
-	height: 7px;
-	background: var(--accent);
+	width: 22px;
+	height: 22px;
+	background: url("/favicon.svg") center / contain no-repeat;
 	display: inline-block;
-	border-radius: 1px;
-	transform: rotate(45deg);
 }
 
 h1 {
