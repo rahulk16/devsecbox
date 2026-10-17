@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Google tag (gtag.js) -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-H5M9YH4C1J"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "G-H5M9YH4C1J");
+		</script>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>JSON Formatter & Validator Online - Free Tool | DevSecBox</title>
+
+		<meta
+			name="description"
+			content="Free online JSON formatter and validator. Pretty-print, minify, sort and validate JSON with exact line and column errors. Runs in your browser, nothing is uploaded." />
+
+		<meta
+			name="keywords"
+			content="JSON formatter, JSON validator, JSON beautifier, JSON minifier, format JSON online, validate JSON" />
+
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="DevSecBox" />
+
+		<link rel="canonical" href="https://devsecbox.fyi/json-formatter/" />
+
+		<!-- Open Graph / social -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="DevSecBox" />
+		<meta
+			property="og:title"
+			content="JSON Formatter & Validator Online - Free Tool" />
+		<meta
+			property="og:description"
+			content="Format, validate, minify and sort JSON instantly. Runs entirely in your browser." />
+		<meta property="og:url" content="https://devsecbox.fyi/json-formatter/" />
+		<meta name="twitter:card" content="summary" />
+
+		<!-- Fonts: loaded with <link> (faster than CSS @import) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+		<link rel="stylesheet" href="../style.css" />
+		<link rel="stylesheet" href="style.css" />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@graph": [
+					{
+						"@type": "WebApplication",
+						"name": "JSON Formatter & Validator",
+						"url": "https://devsecbox.fyi/json-formatter/",
+						"applicationCategory": "DeveloperApplication",
+						"operatingSystem": "Any (runs in the browser)",
+						"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+					},
+					{
+						"@type": "FAQPage",
+						"mainEntity": [
+							{
+								"@type": "Question",
+								"name": "Is my JSON uploaded anywhere?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "No. Formatting and validation run in your browser with JavaScript. Nothing is sent to a server."
+								}
+							},
+							{
+								"@type": "Question",
+								"name": "Why is my JSON invalid?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "Common causes are trailing commas, single quotes, unquoted keys and comments. JSON allows none of these."
+								}
+							},
+							{
+								"@type": "Question",
+								"name": "What is the difference between formatting and minifying JSON?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "Formatting adds indentation and line breaks for readability. Minifying removes all extra whitespace to reduce size."
+								}
+							}
+						]
+					}
+				]
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<nav class="nav topnav">
+				<a href="/" class="brand">DevSecBox</a>
+				<a href="/" class="navlink">All tools</a>
+			</nav>
+
+			<main>
+				<section class="tool-section">
+					<div class="eyebrow">JSON ⇄ Pretty JSON</div>
+					<h1>JSON formatter / validator</h1>
+					<p class="sub">
+						Format, minify and validate JSON — everything runs locally in your
+						browser.
+					</p>
+
+					<div class="card">
+						<div class="toolbar">
+							<div class="mode-row" role="group" aria-label="Mode">
+								<button
+									type="button"
+									class="mode-btn active"
+									id="modeFormat"
+									aria-pressed="true">
+									Format
+								</button>
+								<button
+									type="button"
+									class="mode-btn"
+									id="modeMinify"
+									aria-pressed="false">
+									Minify
+								</button>
+							</div>
+
+							<div class="options">
+								<label class="opt">
+									<span>Indent</span>
+									<select id="indent">
+										<option value="2">2 spaces</option>
+										<option value="4">4 spaces</option>
+										<option value="tab">Tab</option>
+									</select>
+								</label>
+								<label class="opt check">
+									<input type="checkbox" id="sortKeys" />
+									<span>Sort keys</span>
+								</label>
+							</div>
+						</div>
+
+						<div class="panes">
+							<div class="field">
+								<label class="field-label" for="input">
+									<span>Input JSON</span>
+								</label>
+								<textarea
+									id="input"
+									placeholder='{"paste": "your JSON here"}'
+									spellcheck="false"
+									autocomplete="off"
+									autocapitalize="off"></textarea>
+							</div>
+
+							<div class="field">
+								<div class="field-label" id="outputLabelWrap">
+									<span id="outputLabel">Result</span>
+								</div>
+								<div
+									class="output empty"
+									id="output"
+									tabindex="0"
+									role="region"
+									aria-live="polite"
+									aria-labelledby="outputLabel">
+									Result will appear here
+								</div>
+							</div>
+						</div>
+
+						<div class="status" id="status" role="status" aria-live="polite">
+							Paste JSON to validate it.
+						</div>
+
+						<div class="actions">
+							<div class="btn-group">
+								<button type="button" class="act" id="clearBtn">
+									<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+										<polyline points="3 6 5 6 21 6"></polyline>
+										<path d="M19 6l-1 14H6L5 6"></path>
+										<path d="M10 11v6M14 11v6"></path>
+										<path d="M9 6V4h6v2"></path>
+									</svg>
+									Clear
+								</button>
+								<button type="button" class="act" id="sampleBtn">Sample</button>
+								<label class="act file" for="fileInput">
+									<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+										<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+										<polyline points="17 8 12 3 7 8"></polyline>
+										<line x1="12" y1="3" x2="12" y2="15"></line>
+									</svg>
+									Open file
+									<input
+										type="file"
+										id="fileInput"
+										accept=".json,application/json,text/plain" />
+								</label>
+							</div>
+							<div class="btn-group">
+								<button type="button" class="act" id="downloadBtn">
+									<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+										<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+										<polyline points="7 10 12 15 17 10"></polyline>
+										<line x1="12" y1="15" x2="12" y2="3"></line>
+									</svg>
+									Download
+								</button>
+								<button type="button" class="act copy" id="copyBtn">
+									<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+										<rect x="9" y="9" width="13" height="13" rx="2"></rect>
+										<path
+											d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+									</svg>
+									<span id="copyLabel">Copy</span>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<div class="meta centered">
+						<span id="keyCount">Keys: 0</span>
+						<span id="depthCount">Depth: 0</span>
+						<span id="byteCount">Bytes: 0</span>
+					</div>
+
+					<p class="footer-note">Nothing you paste ever leaves this page.</p>
+				</section>
+
+				<section class="seo-content">
+					<h2>JSON Formatter and Validator</h2>
+					<p>
+						This free online JSON formatter and validator pretty-prints,
+						minifies and checks JSON. When the JSON is invalid, it shows the
+						exact line and column of the first error. Everything is processed in
+						your browser, so your data is not uploaded to a server.
+					</p>
+
+					<h2>How to format JSON</h2>
+					<ol>
+						<li>Paste your JSON into the input box.</li>
+						<li>Choose <strong>Format</strong> and pick an indent size.</li>
+						<li>The formatted result appears automatically.</li>
+						<li>Click <strong>Copy</strong> or <strong>Download</strong>.</li>
+					</ol>
+
+					<h2>How to minify JSON</h2>
+					<ol>
+						<li>Paste your JSON into the input box.</li>
+						<li>Choose <strong>Minify</strong>.</li>
+						<li>Copy the compact single-line result.</li>
+					</ol>
+
+					<h2>Common JSON errors</h2>
+					<ul>
+						<li>
+							<strong>Trailing comma:</strong> remove the last comma in an
+							object or array.
+						</li>
+						<li>
+							<strong>Single quotes:</strong> keys and strings need double
+							quotes.
+						</li>
+						<li>
+							<strong>Unquoted keys:</strong> <code>{a:1}</code> is JavaScript,
+							not JSON.
+						</li>
+						<li>
+							<strong>Comments:</strong> JSON does not allow <code>//</code> or
+							<code>/* */</code>.
+						</li>
+						<li>
+							<strong>Special values:</strong> <code>undefined</code>,
+							<code>NaN</code> and <code>Infinity</code> are invalid.
+						</li>
+					</ul>
+
+					<h2>Does it change my numbers?</h2>
+					<p>
+						Numbers are parsed as standard JavaScript numbers, so integers above
+						9,007,199,254,740,991 can lose precision. Keep very large IDs as
+						strings.
+					</p>
+				</section>
+			</main>
+
+			<footer>
+				<span class="footer-copy"
+					>© <span id="year"></span> DevSecBox — developer &amp; security
+					utilities for everyday engineering work.</span
+				>
+				<div class="footer-links">
+					<a href="/about/">About</a>
+					<a href="/contact/">Contact</a>
+					<a href="/privacy/">Privacy Policy</a>
+					<a href="/terms/">Terms of Service</a>
+				</div>
+			</footer>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
