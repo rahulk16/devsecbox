@@ -96,7 +96,7 @@ h1 {
 textarea,
 .output {
 	width: 100%;
-	min-height: 110px;
+	min-height: 150px;
 	background: #fbfbfa;
 	border: 1px solid var(--line);
 	border-radius: 8px;
@@ -121,7 +121,7 @@ textarea::placeholder {
 	white-space: pre-wrap;
 	word-break: break-all;
 	cursor: text;
-	min-height: 90px;
+	min-height: 130px;
 }
 .output.empty {
 	color: #b7b9bd;
@@ -165,6 +165,9 @@ textarea::placeholder {
 	gap: 8px;
 }
 button.act {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
 	font-family: "Space Grotesk", sans-serif;
 	font-weight: 600;
 	font-size: 13.5px;
@@ -184,6 +187,16 @@ button.act.copy.copied {
 	background: var(--good);
 	border-color: var(--good);
 	color: #fff;
+}
+
+.ico {
+	width: 15px;
+	height: 15px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
 }
 
 button:focus-visible {
@@ -211,28 +224,11 @@ button:focus-visible {
 	font-family: "JetBrains Mono", monospace;
 }
 
-/* ---------- page layout ---------- */
-.content-layout {
-	display: grid;
-	grid-template-columns: 1fr 1.1fr;
-	gap: 60px;
-	align-items: start;
-}
-/* lets long unbroken Base64 strings wrap instead of stretching the grid */
-.content-layout > * {
-	min-width: 0;
-}
-.tool-section {
-	width: 100%;
-	order: 2; /* tool on the right on desktop */
-}
-
-/* ---------- explainer (overrides shared .seo-content) ---------- */
+/* ---------- explainer below the tool (single column, like the other tools) ---------- */
 .seo-content {
-	order: 1; /* explainer on the left on desktop */
-	max-width: none;
-	margin: 0;
-	padding: 10px 4px 0;
+	max-width: 680px;
+	margin: 50px auto 0;
+	padding: 0;
 	border-top: none;
 }
 .seo-content h2 {
@@ -263,21 +259,13 @@ footer {
 	text-align: left;
 }
 
-/* ---------- tablet & below: stack, tool first ---------- */
+/* ---------- tablet & below ---------- */
 @media (max-width: 900px) {
 	body {
 		padding: 28px 16px;
 	}
-	.content-layout {
-		grid-template-columns: 1fr;
-		gap: 40px;
-	}
-	.tool-section,
 	.seo-content {
-		order: 0; /* follows HTML order: tool first */
-	}
-	.seo-content {
-		padding-top: 0;
+		margin-top: 40px;
 	}
 }
 
@@ -325,6 +313,9 @@ footer {
 	}
 	button.act.copy {
 		width: 100%;
+	}
+	button.act {
+		justify-content: center;
 	}
 	.seo-content h2 {
 		font-size: 18px;

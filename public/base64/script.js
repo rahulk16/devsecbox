@@ -14,6 +14,7 @@ const modeEncodeBtn = document.getElementById("modeEncode");
 const modeDecodeBtn = document.getElementById("modeDecode");
 const clearBtn = document.getElementById("clearBtn");
 const copyBtn = document.getElementById("copyBtn");
+const copyLabel = document.getElementById("copyLabel");
 
 // Build the rail dots once
 for (let i = 0; i < DOT_COUNT; i++) {
@@ -173,11 +174,11 @@ async function copyOutput() {
 		}
 
 		const original = "Copy";
-		copyBtn.textContent = "Copied";
+		copyLabel.textContent = "Copied";
 		copyBtn.classList.add("copied");
 
 		setTimeout(() => {
-			copyBtn.textContent = original;
+			copyLabel.textContent = original;
 			copyBtn.classList.remove("copied");
 		}, 1300);
 	} catch (error) {
