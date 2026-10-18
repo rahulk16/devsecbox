@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Google tag (gtag.js) -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-H5M9YH4C1J"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "G-H5M9YH4C1J");
+		</script>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>
+			JWT Decoder Online - Decode &amp; Inspect JSON Web Tokens | DevSecBox
+		</title>
+
+		<meta
+			name="description"
+			content="Free online JWT decoder. Decode a JSON Web Token to see its header, payload and claims, check expiry, and verify HMAC signatures. Runs in your browser, nothing is uploaded." />
+
+		<meta
+			name="keywords"
+			content="JWT decoder, decode JWT, JSON Web Token, JWT parser, JWT debugger, JWT expiry check" />
+
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="DevSecBox" />
+
+		<link rel="canonical" href="https://devsecbox.fyi/jwt-decoder/" />
+
+		<!-- Open Graph / social -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="DevSecBox" />
+		<meta
+			property="og:title"
+			content="JWT Decoder Online - Decode & Inspect JSON Web Tokens" />
+		<meta
+			property="og:description"
+			content="Decode JWT header, payload and claims, check expiry and verify HMAC signatures. Runs entirely in your browser." />
+		<meta property="og:url" content="https://devsecbox.fyi/jwt-decoder/" />
+		<meta name="twitter:card" content="summary" />
+
+		<!-- Fonts: loaded with <link> (faster than CSS @import) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+		<link rel="stylesheet" href="../style.css" />
+		<link rel="stylesheet" href="style.css" />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@graph": [
+					{
+						"@type": "WebApplication",
+						"name": "JWT Decoder",
+						"url": "https://devsecbox.fyi/jwt-decoder/",
+						"applicationCategory": "DeveloperApplication",
+						"operatingSystem": "Any (runs in the browser)",
+						"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+					},
+					{
+						"@type": "FAQPage",
+						"mainEntity": [
+							{
+								"@type": "Question",
+								"name": "Is it safe to paste my JWT here?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "Decoding happens entirely in your browser. The token is never sent to a server. Even so, avoid pasting live production tokens into any tool you do not trust."
+								}
+							},
+							{
+								"@type": "Question",
+								"name": "Does decoding a JWT verify it?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "No. Decoding only reads the header and payload, which are Base64URL encoded and not encrypted. A token is trustworthy only after its signature is verified with the correct key."
+								}
+							},
+							{
+								"@type": "Question",
+								"name": "What do exp, iat and nbf mean?",
+								"acceptedAnswer": {
+									"@type": "Answer",
+									"text": "exp is the expiry time, iat is when the token was issued and nbf is the time before which it must not be accepted. All three are Unix timestamps in seconds."
+								}
+							}
+						]
+					}
+				]
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<nav class="nav topnav">
+				<a href="/" class="brand">DevSecBox</a>
+				<a href="/" class="navlink">All tools</a>
+			</nav>
+
+			<main>
+				<section class="tool-section">
+					<div class="eyebrow">JWT ⇄ JSON</div>
+					<h1>JWT decoder</h1>
+					<p class="sub">
+						Decode a JSON Web Token and inspect its header, payload and expiry —
+						everything runs locally in your browser.
+					</p>
+
+					<div class="card">
+						<div class="field top">
+							<div class="field-label">
+								<label for="token">Encoded token</label>
+								<span id="tokenState" class="state"></span>
+							</div>
+							<textarea
+								id="token"
+								placeholder="Paste a JWT here (eyJhbGciOi…)"
+								spellcheck="false"
+								autocomplete="off"
+								autocapitalize="off"></textarea>
+						</div>
+
+						<div class="status" id="status" role="status" aria-live="polite">
+							Paste a JWT to decode it.
+						</div>
+
+						<div class="panes">
+							<div class="field">
+								<div class="field-label">
+									<span id="headerLabel">Header</span>
+									<button type="button" class="mini" data-copy="header">
+										Copy
+									</button>
+								</div>
+								<div
+									class="output empty"
+									id="header"
+									tabindex="0"
+									role="region"
+									aria-labelledby="headerLabel">
+									Decoded header will appear here
+								</div>
+							</div>
+							<div class="field">
+								<div class="field-label">
+									<span id="payloadLabel">Payload</span>
+									<button type="button" class="mini" data-copy="payload">
+										Copy
+									</button>
+								</div>
+								<div
+									class="output empty"
+									id="payload"
+									tabindex="0"
+									role="region"
+									aria-labelledby="payloadLabel">
+									Decoded payload will appear here
+								</div>
+							</div>
+						</div>
+
+						<div class="claims-wrap" id="claimsWrap" hidden>
+							<div class="field-label"><span>Claims</span></div>
+							<div class="claims" id="claims"></div>
+						</div>
+
+						<div class="field verify">
+							<div class="field-label">
+								<span>Signature</span>
+								<span id="verifyState" class="state"></span>
+							</div>
+							<div
+								class="output sig empty"
+								id="signature"
+								tabindex="0"
+								role="region"
+								aria-label="Signature">
+								Signature will appear here
+							</div>
+
+							<div class="verify-row">
+								<input
+									type="text"
+									id="secret"
+									placeholder="HMAC secret (HS256 / HS384 / HS512)"
+									spellcheck="false"
+									autocomplete="off"
+									aria-label="HMAC secret" />
+								<label class="opt">
+									<input type="checkbox" id="secretB64" />
+									<span>Secret is Base64URL</span>
+								</label>
+								<button type="button" class="act" id="verifyBtn">
+									<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+										<path
+											d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+										<polyline points="9 12 11 14 15 10"></polyline>
+									</svg>
+									Verify
+								</button>
+							</div>
+						</div>
+
+						<div class="actions">
+							<div class="btn-group">
+								<button type="button" class="act" id="clearBtn">
+									<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+										<polyline points="3 6 5 6 21 6"></polyline>
+										<path d="M19 6l-1 14H6L5 6"></path>
+										<path d="M10 11v6M14 11v6"></path>
+										<path d="M9 6V4h6v2"></path>
+									</svg>
+									Clear
+								</button>
+								<button type="button" class="act" id="sampleBtn">Sample</button>
+							</div>
+							<button type="button" class="act copy" id="copyTokenBtn">
+								<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+									<rect x="9" y="9" width="13" height="13" rx="2"></rect>
+									<path
+										d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+								</svg>
+								<span id="copyTokenLabel">Copy token</span>
+							</button>
+						</div>
+					</div>
+
+					<p class="footer-note">
+						Decoding is not verification. Your token never leaves this page.
+					</p>
+				</section>
+
+				<section class="seo-content">
+					<h2>JWT Decoder</h2>
+					<p>
+						This free online JWT decoder splits a JSON Web Token into its
+						header, payload and signature and shows the decoded JSON. It also
+						reads the standard time claims, tells you whether the token has
+						expired, and can verify HMAC signatures. Everything runs in your
+						browser, so the token is not uploaded to a server.
+					</p>
+
+					<h2>What is a JWT?</h2>
+					<p>
+						A JSON Web Token is a compact, URL-safe way to pass claims between
+						parties. It has three Base64URL parts separated by dots:
+						<code>header.payload.signature</code>. The header names the signing
+						algorithm, the payload holds the claims, and the signature lets a
+						server check the token was not changed.
+					</p>
+
+					<h2>How to decode a JWT</h2>
+					<ol>
+						<li>
+							Paste the token into the <strong>Encoded token</strong> box.
+						</li>
+						<li>The header and payload are decoded automatically.</li>
+						<li>
+							Check the <strong>Claims</strong> table for expiry and issue
+							times.
+						</li>
+						<li>
+							To check the signature, enter the secret and click
+							<strong>Verify</strong>.
+						</li>
+					</ol>
+
+					<h2>Common JWT claims</h2>
+					<ul>
+						<li><strong>iss</strong> — who issued the token.</li>
+						<li><strong>sub</strong> — the subject, usually a user ID.</li>
+						<li><strong>aud</strong> — who the token is intended for.</li>
+						<li><strong>exp</strong> — expiry time (Unix seconds).</li>
+						<li><strong>nbf</strong> — not valid before this time.</li>
+						<li><strong>iat</strong> — when the token was issued.</li>
+						<li><strong>jti</strong> — a unique token ID.</li>
+					</ul>
+
+					<h2>Is a JWT encrypted?</h2>
+					<p>
+						No. A standard signed JWT is encoded, not encrypted. Anyone who has
+						the token can read the header and payload, so never put passwords or
+						other secrets in it. The signature only proves the contents were not
+						altered.
+					</p>
+
+					<h2>Why does the algorithm "none" matter?</h2>
+					<p>
+						A token with <code>"alg": "none"</code> has no signature. Servers
+						must reject such tokens and only accept the algorithms they expect.
+						This tool flags it with a warning.
+					</p>
+				</section>
+			</main>
+
+			<footer>
+				<span class="footer-copy"
+					>© <span id="year"></span> DevSecBox — developer &amp; security
+					utilities for everyday engineering work.</span
+				>
+				<div class="footer-links">
+					<a href="/about/">About</a>
+					<a href="/contact/">Contact</a>
+					<a href="/privacy/">Privacy Policy</a>
+					<a href="/terms/">Terms of Service</a>
+				</div>
+			</footer>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
