@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Google tag (gtag.js) -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-H5M9YH4C1J"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "G-H5M9YH4C1J");
+		</script>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>Unix Timestamp Converter Online - Epoch to Date &amp; Date to Epoch | DevSecBox</title>
+
+		<meta
+			name="description"
+			content="Free online Unix timestamp converter. Convert epoch time in seconds, milliseconds, microseconds or nanoseconds to a human-readable date, and dates back to Unix time, in any timezone. Runs in your browser." />
+
+		<meta
+			name="keywords"
+			content="Unix timestamp converter, epoch converter, epoch to date, date to epoch, Unix time, timestamp to date, milliseconds to date, current Unix timestamp" />
+
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="DevSecBox" />
+
+		<link
+			rel="canonical"
+			href="https://devsecbox.fyi/unix-timestamp-converter/" />
+
+		<!-- Open Graph / social -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="DevSecBox" />
+		<meta
+			property="og:title"
+			content="Unix Timestamp Converter Online - Epoch to Date &amp; Date to Epoch" />
+		<meta
+			property="og:description"
+			content="Convert Unix timestamps to dates and dates to Unix time in any timezone. Runs entirely in your browser." />
+		<meta
+			property="og:url"
+			content="https://devsecbox.fyi/unix-timestamp-converter/" />
+		<meta name="twitter:card" content="summary" />
+
+		<!-- Fonts: loaded with <link> (faster than CSS @import) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+		<link rel="stylesheet" href="../style.css" />
+		<link rel="stylesheet" href="style.css" />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "WebApplication",
+				"name": "Unix Timestamp Converter",
+				"url": "https://devsecbox.fyi/unix-timestamp-converter/",
+				"applicationCategory": "DeveloperApplication",
+				"operatingSystem": "Any (runs in the browser)",
+				"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<nav class="nav topnav">
+				<a href="/" class="brand">DevSecBox</a>
+				<a href="/" class="navlink">All tools</a>
+			</nav>
+
+			<main>
+				<section class="tool-section">
+					<div class="eyebrow">Epoch ⇄ date</div>
+					<h1>Unix timestamp converter</h1>
+					<p class="sub">
+						Convert Unix time to a readable date and back, in any timezone —
+						everything runs locally in your browser.
+					</p>
+
+					<div class="card">
+						<div class="block now-block">
+							<div class="field-label">
+								<span>Current Unix time</span>
+								<span class="live-dot" aria-hidden="true">live</span>
+							</div>
+							<dl class="grid" id="nowGrid">
+								<div class="item">
+									<dt>Seconds</dt>
+									<dd>
+										<button type="button" class="val big" id="nowSec">–</button>
+									</dd>
+								</div>
+								<div class="item">
+									<dt>Milliseconds</dt>
+									<dd>
+										<button type="button" class="val big" id="nowMs">–</button>
+									</dd>
+								</div>
+							</dl>
+						</div>
+
+						<div class="block">
+							<label class="field-label" for="tz">
+								<span>Timezone</span>
+							</label>
+							<select id="tz"></select>
+						</div>
+
+						<div class="block">
+							<div class="section-title">Timestamp → date</div>
+							<div class="input-row">
+								<input
+									type="text"
+									id="tsInput"
+									inputmode="decimal"
+									aria-label="Unix timestamp"
+									placeholder="1700000000"
+									spellcheck="false"
+									autocomplete="off" />
+								<select id="unit" aria-label="Timestamp unit">
+									<option value="auto">Auto-detect</option>
+									<option value="s">Seconds</option>
+									<option value="ms">Milliseconds</option>
+									<option value="us">Microseconds</option>
+									<option value="ns">Nanoseconds</option>
+								</select>
+								<button type="button" class="act" id="tsNow">Now</button>
+							</div>
+							<div class="examples" role="group" aria-label="Examples">
+								<span class="examples-label">Try</span>
+								<button type="button" class="chip" data-ex="0">0</button>
+								<button type="button" class="chip" data-ex="1700000000">
+									1700000000
+								</button>
+								<button type="button" class="chip" data-ex="1700000000000">
+									1700000000000
+								</button>
+								<button type="button" class="chip" data-ex="2147483647">
+									2147483647
+								</button>
+							</div>
+							<div class="status" id="tsStatus" role="status" aria-live="polite"></div>
+							<dl class="grid" id="tsGrid" hidden></dl>
+						</div>
+
+						<div class="block">
+							<div class="section-title">Date → timestamp</div>
+							<div class="input-row">
+								<input
+									type="text"
+									id="dateInput"
+									aria-label="Date and time"
+									placeholder="2026-11-14 16:30:00"
+									spellcheck="false"
+									autocomplete="off" />
+								<button type="button" class="act" id="dateNow">Now</button>
+							</div>
+							<div class="status" id="dateStatus" role="status" aria-live="polite"></div>
+							<dl class="grid" id="dateGrid" hidden></dl>
+						</div>
+
+						<div class="actions">
+							<button type="button" class="act" id="clearBtn">
+								<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+									<polyline points="3 6 5 6 21 6"></polyline>
+									<path d="M19 6l-1 14H6L5 6"></path>
+									<path d="M10 11v6M14 11v6"></path>
+									<path d="M9 6V4h6v2"></path>
+								</svg>
+								Clear
+							</button>
+							<span class="hint">Click any value to copy it</span>
+						</div>
+					</div>
+
+					<p class="footer-note">Nothing you type ever leaves this page.</p>
+				</section>
+
+				<section class="seo-content">
+					<h2>Unix Timestamp Converter</h2>
+
+					<p>
+						This free online Unix timestamp converter turns epoch time into a
+						human-readable date and turns a date back into a Unix timestamp. It
+						shows the result in UTC, ISO 8601 and any timezone you choose, and
+						everything is calculated in your browser — nothing is sent to a
+						server.
+					</p>
+
+					<h2>What is a Unix timestamp?</h2>
+
+					<p>
+						A Unix timestamp (also called epoch time or POSIX time) is the
+						number of seconds that have elapsed since
+						<strong>1 January 1970 00:00:00 UTC</strong>, not counting leap
+						seconds. It is a compact, timezone-independent way to store and
+						compare moments in time, and is used in databases, logs, APIs and
+						JSON Web Tokens.
+					</p>
+
+					<h2>Seconds, milliseconds, microseconds or nanoseconds?</h2>
+
+					<p>
+						Many systems use different units: classic Unix time and JWT claims
+						use seconds (10 digits today), JavaScript and Java use milliseconds
+						(13 digits), and some databases and tracing tools use microseconds
+						or nanoseconds. With <strong>Auto-detect</strong> the converter
+						picks the unit from the size of the number. Values below
+						100,000,000,000 are read as seconds, so a millisecond timestamp
+						from before March 1973 needs the unit chosen manually.
+					</p>
+
+					<h2>How to convert a date to a Unix timestamp</h2>
+
+					<ol>
+						<li>Pick the timezone the date is expressed in.</li>
+						<li>
+							Enter a date such as <strong>2026-11-14 16:30:00</strong>, or an
+							ISO 8601 value like <strong>2026-11-14T16:30:00Z</strong>.
+						</li>
+						<li>
+							Read the Unix time in seconds and milliseconds. A trailing
+							<strong>Z</strong> or offset such as <strong>+05:30</strong> in
+							the input overrides the selected timezone.
+						</li>
+					</ol>
+
+					<h2>What is the Year 2038 problem?</h2>
+
+					<p>
+						Systems that store Unix time as a signed 32-bit integer overflow at
+						03:14:07 UTC on 19 January 2038 (timestamp 2147483647). Modern
+						64-bit systems are not affected. Use the 2147483647 example above
+						to see the exact moment.
+					</p>
+				</section>
+			</main>
+
+			<footer>
+				<span class="footer-copy"
+					>© <span id="year"></span> DevSecBox — developer &amp; security
+					utilities for everyday engineering work.</span
+				>
+				<div class="footer-links">
+					<a href="/about/">About</a>
+					<a href="/contact/">Contact</a>
+					<a href="/privacy/">Privacy Policy</a>
+					<a href="/terms/">Terms of Service</a>
+				</div>
+			</footer>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
+
