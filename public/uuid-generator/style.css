@@ -1,0 +1,444 @@
+/*
+ * UUID generator styles.
+ * Shared variables, reset, body (grid background), .brand, .nav, .eyebrow,
+ * .seo-content and footer styles come from /style.css (loaded first). This
+ * file only holds what is specific to this page, plus overrides of the shared
+ * rules.
+ */
+
+body {
+	padding: 40px 20px;
+}
+
+.wrap {
+	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+/* ---------- top nav (overrides shared .nav sizing) ---------- */
+.topnav {
+	max-width: none;
+	margin: 0 0 36px;
+	padding: 0;
+}
+
+/* ---------- headings ---------- */
+.eyebrow {
+	margin-bottom: 10px;
+}
+
+h1 {
+	font-size: 30px;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	margin: 0 0 4px;
+}
+.sub {
+	color: var(--muted);
+	font-size: 14.5px;
+	margin: 0 0 28px;
+}
+
+/* ---------- card ---------- */
+.card {
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	box-shadow:
+		0 1px 2px rgba(20, 20, 20, 0.03),
+		0 12px 32px -18px rgba(20, 20, 20, 0.18);
+	overflow: hidden;
+}
+
+.block {
+	padding: 18px;
+	border-top: 1px solid var(--line);
+}
+.block:first-child {
+	border-top: none;
+}
+
+.field-label,
+.section-title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-family: "JetBrains Mono", monospace;
+	font-size: 11px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--muted);
+	margin-bottom: 8px;
+}
+.section-title {
+	color: var(--ink);
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+/* ---------- version toggle ---------- */
+.mode-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+.mode-btn {
+	flex: 1 1 auto;
+	font-family: "JetBrains Mono", monospace;
+	font-size: 13px;
+	font-weight: 500;
+	padding: 10px 12px;
+	border-radius: 7px;
+	border: 1px solid var(--line);
+	background: #fff;
+	color: var(--muted);
+	cursor: pointer;
+	transition: all 0.15s ease;
+	white-space: nowrap;
+}
+.mode-btn:hover {
+	color: var(--ink);
+	border-color: #c9c7be;
+}
+.mode-btn.active {
+	background: var(--ink);
+	border-color: var(--ink);
+	color: #fff;
+}
+
+.status {
+	font-family: "JetBrains Mono", monospace;
+	font-size: 12px;
+	color: var(--muted);
+	margin: 12px 0 0;
+	min-height: 18px;
+}
+.status.error {
+	color: var(--error);
+}
+.status:empty {
+	min-height: 0;
+	margin: 0;
+}
+
+/* ---------- inputs ---------- */
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+	background: #fbfbfa;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	padding: 12px 14px;
+	font-family: "JetBrains Mono", monospace;
+	font-size: 16px;
+	color: var(--ink);
+	outline: none;
+	transition: border-color 0.15s ease;
+}
+input[type="text"] {
+	flex: 1;
+	min-width: 0;
+	width: 100%;
+}
+select {
+	cursor: pointer;
+	max-width: 100%;
+}
+input:focus,
+select:focus,
+textarea:focus {
+	border-color: var(--accent);
+}
+input::placeholder {
+	color: #b7b9bd;
+}
+input[hidden] {
+	display: none;
+}
+
+.v5-fields {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin-top: 14px;
+}
+.v5-fields[hidden] {
+	display: none;
+}
+.input-row {
+	display: flex;
+	gap: 8px;
+}
+
+/* ---------- options ---------- */
+.options {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px 22px;
+}
+.opt {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-family: "JetBrains Mono", monospace;
+	font-size: 13px;
+	cursor: pointer;
+}
+.opt input[type="checkbox"] {
+	width: 16px;
+	height: 16px;
+	accent-color: var(--accent);
+	cursor: pointer;
+}
+.opt.count {
+	cursor: default;
+}
+.opt input[type="number"] {
+	width: 84px;
+	padding: 8px 10px;
+}
+
+/* ---------- output ---------- */
+textarea {
+	width: 100%;
+	min-height: 150px;
+	font-size: 13.5px;
+	line-height: 1.6;
+	resize: vertical;
+	white-space: pre;
+	overflow: auto;
+}
+
+/* ---------- results grid (inspector) ---------- */
+.grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0 18px;
+	margin: 0;
+}
+.grid[hidden] {
+	display: none;
+}
+.item {
+	padding: 11px 0;
+	border-top: 1px solid var(--line);
+	min-width: 0;
+}
+dt {
+	font-family: "JetBrains Mono", monospace;
+	font-size: 11px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--muted);
+	margin-bottom: 4px;
+}
+dd {
+	margin: 0;
+}
+button.val {
+	display: block;
+	max-width: 100%;
+	padding: 3px 6px;
+	margin: 0 -6px;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	background: transparent;
+	font-family: "JetBrains Mono", monospace;
+	font-size: 14px;
+	color: var(--ink);
+	text-align: left;
+	word-break: break-all;
+	cursor: copy;
+	transition: all 0.15s ease;
+}
+button.val:hover {
+	background: #fbfbfa;
+	border-color: var(--line);
+}
+button.val.copied {
+	background: var(--good);
+	border-color: var(--good);
+	color: #fff;
+}
+.inspect .status {
+	margin-bottom: 4px;
+}
+
+/* ---------- actions ---------- */
+.actions {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 14px 18px 18px;
+}
+.btn-group {
+	display: flex;
+	gap: 8px;
+}
+button.act {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 7px;
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 600;
+	font-size: 13.5px;
+	padding: 9px 16px;
+	border-radius: 7px;
+	border: 1px solid var(--line);
+	background: #fff;
+	color: var(--ink);
+	cursor: pointer;
+	transition: all 0.15s ease;
+}
+button.act:hover:not(:disabled) {
+	border-color: #c9c7be;
+	background: #fafaf8;
+}
+button.act.primary {
+	background: var(--accent);
+	border-color: var(--accent);
+	color: var(--accent-ink);
+}
+button.act.primary:hover:not(:disabled) {
+	background: #4338ca;
+	border-color: #4338ca;
+}
+button.act:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+button.act.copy.copied {
+	background: var(--good);
+	border-color: var(--good);
+	color: #fff;
+}
+
+.ico {
+	width: 15px;
+	height: 15px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+button:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+.footer-note {
+	text-align: center;
+	font-size: 12px;
+	color: var(--muted);
+	margin-top: 18px;
+	font-family: "JetBrains Mono", monospace;
+}
+
+/* ---------- explainer below the tool (single column, like the other tools) ---------- */
+.seo-content {
+	max-width: 680px;
+	margin: 50px auto 0;
+	padding: 0;
+	border-top: none;
+}
+.seo-content h2 {
+	font-size: 20px;
+	font-weight: 700;
+	margin: 32px 0 10px;
+}
+.seo-content p,
+.seo-content li {
+	color: var(--muted);
+	line-height: 1.7;
+}
+.seo-content ol,
+.seo-content ul {
+	padding-left: 22px;
+}
+.seo-content strong {
+	color: var(--ink);
+}
+
+/* ---------- footer (overrides shared footer: stacked, left-aligned) ---------- */
+footer {
+	max-width: none;
+	margin: 60px 0 0;
+	padding: 24px 0 0;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	text-align: left;
+}
+
+/* ---------- tablet & below ---------- */
+@media (max-width: 900px) {
+	body {
+		padding: 28px 16px;
+	}
+	.seo-content {
+		margin-top: 40px;
+	}
+}
+
+/* ---------- phones ---------- */
+@media (max-width: 600px) {
+	.grid {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+@media (max-width: 480px) {
+	body {
+		padding: 20px 14px;
+	}
+	.topnav {
+		margin-bottom: 24px;
+	}
+	h1 {
+		font-size: 24px;
+	}
+	.sub {
+		margin-bottom: 20px;
+	}
+	.block {
+		padding: 14px;
+	}
+	.mode-btn {
+		flex: 1 1 30%;
+	}
+	textarea {
+		font-size: 13px;
+	}
+	.actions {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 10px;
+		padding: 12px 14px 14px;
+	}
+	.btn-group {
+		width: 100%;
+	}
+	.btn-group button.act {
+		flex: 1;
+	}
+	.seo-content h2 {
+		font-size: 18px;
+	}
+	footer {
+		margin-top: 40px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.mode-btn,
+	button.val,
+	button.act {
+		transition: none;
+	}
+}
