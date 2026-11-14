@@ -1,0 +1,435 @@
+/*
+ * URL encoder/decoder styles.
+ * Shared variables, reset, body (grid background), .brand, .nav, .eyebrow,
+ * .seo-content and footer styles come from /style.css (loaded first). This
+ * file only holds what is specific to this page, plus overrides of the shared
+ * rules.
+ */
+
+body {
+	padding: 40px 20px;
+}
+
+.wrap {
+	width: 100%;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+/* ---------- top nav (overrides shared .nav sizing) ---------- */
+.topnav {
+	max-width: none;
+	margin: 0 0 36px;
+	padding: 0;
+}
+
+/* ---------- headings ---------- */
+.eyebrow {
+	margin-bottom: 10px;
+}
+
+h1 {
+	font-size: 30px;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	margin: 0 0 4px;
+}
+.sub {
+	color: var(--muted);
+	font-size: 14.5px;
+	margin: 0 0 28px;
+}
+
+/* ---------- card ---------- */
+.card {
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	box-shadow:
+		0 1px 2px rgba(20, 20, 20, 0.03),
+		0 12px 32px -18px rgba(20, 20, 20, 0.18);
+	overflow: hidden;
+}
+
+/* segmented mode toggle */
+.mode-row {
+	display: flex;
+	padding: 14px;
+	border-bottom: 1px solid var(--line);
+	gap: 6px;
+}
+.mode-btn {
+	flex: 1;
+	font-family: "JetBrains Mono", monospace;
+	font-size: 13px;
+	font-weight: 500;
+	padding: 10px 12px;
+	border-radius: 7px;
+	border: 1px solid transparent;
+	background: transparent;
+	color: var(--muted);
+	cursor: pointer;
+	transition: all 0.15s ease;
+	letter-spacing: 0.02em;
+}
+.mode-btn:hover {
+	color: var(--ink);
+}
+.mode-btn.active {
+	background: var(--ink);
+	color: #fff;
+}
+
+/* ---------- options ---------- */
+.options {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px 22px;
+	padding: 14px 18px;
+	border-bottom: 1px solid var(--line);
+}
+.options[hidden],
+[hidden] {
+	display: none !important;
+}
+.opt {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-family: "JetBrains Mono", monospace;
+	font-size: 13px;
+	cursor: pointer;
+}
+.opt input[type="checkbox"] {
+	width: 16px;
+	height: 16px;
+	accent-color: var(--accent);
+	cursor: pointer;
+}
+.opt code {
+	font-family: inherit;
+	background: #f0efea;
+	border-radius: 4px;
+	padding: 1px 5px;
+}
+.opt.scope {
+	cursor: default;
+}
+select {
+	background: #fbfbfa;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	padding: 8px 10px;
+	font-family: "JetBrains Mono", monospace;
+	font-size: 13px;
+	color: var(--ink);
+	outline: none;
+	cursor: pointer;
+	max-width: 100%;
+}
+select:focus {
+	border-color: var(--accent);
+}
+
+/* ---------- fields ---------- */
+.field {
+	padding: 18px 18px 6px;
+}
+.field-label,
+.section-title {
+	display: flex;
+	justify-content: space-between;
+	font-family: "JetBrains Mono", monospace;
+	font-size: 11px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--muted);
+	margin-bottom: 8px;
+}
+.section-title {
+	color: var(--ink);
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+textarea,
+.output {
+	width: 100%;
+	min-height: 150px;
+	background: #fbfbfa;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	padding: 12px 13px;
+	font-family: "JetBrains Mono", monospace;
+	font-size: 13.5px;
+	line-height: 1.55;
+	color: var(--ink);
+	resize: vertical;
+	outline: none;
+	transition: border-color 0.15s ease;
+}
+textarea:focus,
+.output:focus {
+	border-color: var(--accent);
+}
+textarea::placeholder {
+	color: #b7b9bd;
+}
+
+.output {
+	white-space: pre-wrap;
+	word-break: break-all;
+	cursor: text;
+	min-height: 130px;
+}
+.output.empty {
+	color: #b7b9bd;
+}
+.output.error {
+	color: var(--error);
+}
+
+.status {
+	font-family: "JetBrains Mono", monospace;
+	font-size: 12px;
+	color: var(--muted);
+	margin: 10px 0 0;
+}
+.status:empty {
+	display: none;
+}
+.status.error {
+	color: var(--error);
+}
+
+/* ---------- actions ---------- */
+.actions {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 14px 18px 18px;
+}
+.btn-group {
+	display: flex;
+	gap: 8px;
+}
+button.act {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 7px;
+	font-family: "Space Grotesk", sans-serif;
+	font-weight: 600;
+	font-size: 13.5px;
+	padding: 9px 16px;
+	border-radius: 7px;
+	border: 1px solid var(--line);
+	background: #fff;
+	color: var(--ink);
+	cursor: pointer;
+	transition: all 0.15s ease;
+}
+button.act:hover {
+	border-color: #c9c7be;
+	background: #fafaf8;
+}
+button.act.copy.copied {
+	background: var(--good);
+	border-color: var(--good);
+	color: #fff;
+}
+
+.ico {
+	width: 15px;
+	height: 15px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+button:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
+/* ---------- query parameters ---------- */
+.params {
+	padding: 18px;
+	border-top: 1px solid var(--line);
+}
+.table-wrap {
+	overflow-x: auto;
+	border: 1px solid var(--line);
+	border-radius: 8px;
+	max-height: 320px;
+	overflow-y: auto;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-family: "JetBrains Mono", monospace;
+	font-size: 13px;
+}
+th,
+td {
+	text-align: left;
+	padding: 8px 12px;
+	border-bottom: 1px solid var(--line);
+	vertical-align: top;
+	word-break: break-all;
+}
+th {
+	position: sticky;
+	top: 0;
+	background: #fbfbfa;
+	font-size: 11px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--muted);
+	font-weight: 500;
+}
+th:first-child,
+td:first-child {
+	width: 44px;
+	color: var(--muted);
+}
+tr:last-child td {
+	border-bottom: none;
+}
+
+.meta {
+	font-family: "JetBrains Mono", monospace;
+	font-size: 11.5px;
+	color: var(--muted);
+	display: flex;
+	gap: 14px;
+}
+.meta.centered {
+	justify-content: center;
+	margin-top: 14px;
+}
+
+.footer-note {
+	text-align: center;
+	font-size: 12px;
+	color: var(--muted);
+	margin-top: 18px;
+	font-family: "JetBrains Mono", monospace;
+}
+
+/* ---------- explainer below the tool (single column, like the other tools) ---------- */
+.seo-content {
+	max-width: 680px;
+	margin: 50px auto 0;
+	padding: 0;
+	border-top: none;
+}
+.seo-content h2 {
+	font-size: 20px;
+	font-weight: 700;
+	margin: 32px 0 10px;
+}
+.seo-content p,
+.seo-content li {
+	color: var(--muted);
+	line-height: 1.7;
+}
+.seo-content ol,
+.seo-content ul {
+	padding-left: 22px;
+}
+.seo-content strong {
+	color: var(--ink);
+}
+
+/* ---------- footer (overrides shared footer: stacked, left-aligned) ---------- */
+footer {
+	max-width: none;
+	margin: 60px 0 0;
+	padding: 24px 0 0;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	text-align: left;
+}
+
+/* ---------- tablet & below ---------- */
+@media (max-width: 900px) {
+	body {
+		padding: 28px 16px;
+	}
+	.seo-content {
+		margin-top: 40px;
+	}
+}
+
+/* ---------- phones ---------- */
+@media (max-width: 480px) {
+	body {
+		padding: 20px 14px;
+	}
+	.topnav {
+		margin-bottom: 24px;
+	}
+	h1 {
+		font-size: 24px;
+	}
+	.sub {
+		margin-bottom: 20px;
+	}
+	.mode-row {
+		padding: 10px;
+	}
+	.options {
+		padding: 12px 14px;
+	}
+	.opt.scope {
+		flex-direction: column;
+		align-items: stretch;
+		width: 100%;
+	}
+	.field {
+		padding: 14px 14px 4px;
+	}
+	/* 16px stops iOS Safari from zooming the page when the box is focused */
+	textarea {
+		font-size: 16px;
+	}
+	.output {
+		font-size: 14px;
+	}
+	.actions {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 10px;
+		padding: 12px 14px 14px;
+	}
+	.btn-group {
+		width: 100%;
+	}
+	.btn-group button.act {
+		flex: 1;
+	}
+	button.act.copy {
+		width: 100%;
+	}
+	.params {
+		padding: 14px;
+	}
+	.seo-content h2 {
+		font-size: 18px;
+	}
+	footer {
+		margin-top: 40px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.mode-btn,
+	button.act {
+		transition: none;
+	}
+}
