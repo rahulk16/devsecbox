@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Google tag (gtag.js) -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-H5M9YH4C1J"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "G-H5M9YH4C1J");
+		</script>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>UUID Generator Online - v4, v7, v1, v5 &amp; Validator | DevSecBox</title>
+
+		<meta
+			name="description"
+			content="Free online UUID generator. Create random UUID v4, time-ordered UUID v7, v1 and name-based v5 identifiers in bulk, and inspect any UUID. Uses your browser's secure random generator — nothing is uploaded." />
+
+		<meta
+			name="keywords"
+			content="UUID generator, GUID generator, UUID v4, UUID v7, UUID v1, UUID v5, random UUID, bulk UUID generator, UUID validator" />
+
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="DevSecBox" />
+
+		<link rel="canonical" href="https://devsecbox.fyi/uuid-generator/" />
+
+		<!-- Open Graph / social -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="DevSecBox" />
+		<meta
+			property="og:title"
+			content="UUID Generator Online - v4, v7, v1, v5 &amp; Validator" />
+		<meta
+			property="og:description"
+			content="Generate UUIDs in bulk and inspect any UUID. Runs entirely in your browser." />
+		<meta property="og:url" content="https://devsecbox.fyi/uuid-generator/" />
+		<meta name="twitter:card" content="summary" />
+
+		<!-- Fonts: loaded with <link> (faster than CSS @import) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+		<link rel="stylesheet" href="../style.css" />
+		<link rel="stylesheet" href="style.css" />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "WebApplication",
+				"name": "UUID Generator",
+				"url": "https://devsecbox.fyi/uuid-generator/",
+				"applicationCategory": "DeveloperApplication",
+				"operatingSystem": "Any (runs in the browser)",
+				"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<nav class="nav topnav">
+				<a href="/" class="brand">DevSecBox</a>
+				<a href="/" class="navlink">All tools</a>
+			</nav>
+
+			<main>
+				<section class="tool-section">
+					<div class="eyebrow">Random ⇄ identifiers</div>
+					<h1>UUID generator</h1>
+					<p class="sub">
+						Generate UUIDs in bulk and inspect any UUID — everything runs
+						locally in your browser.
+					</p>
+
+					<div class="card">
+						<div class="block">
+							<div class="field-label"><span>Version</span></div>
+							<div class="mode-row" id="versions" role="group" aria-label="UUID version">
+								<button type="button" class="mode-btn active" data-v="v4" aria-pressed="true">v4 random</button>
+								<button type="button" class="mode-btn" data-v="v7" aria-pressed="false">v7 time-ordered</button>
+								<button type="button" class="mode-btn" data-v="v1" aria-pressed="false">v1 time</button>
+								<button type="button" class="mode-btn" data-v="v5" aria-pressed="false">v5 name</button>
+								<button type="button" class="mode-btn" data-v="nil" aria-pressed="false">Nil</button>
+								<button type="button" class="mode-btn" data-v="max" aria-pressed="false">Max</button>
+							</div>
+							<p class="status" id="versionNote"></p>
+
+							<div class="v5-fields" id="v5Fields" hidden>
+								<div class="input-row">
+									<select id="ns" aria-label="Namespace">
+										<option value="6ba7b810-9dad-11d1-80b4-00c04fd430c8">DNS namespace</option>
+										<option value="6ba7b811-9dad-11d1-80b4-00c04fd430c8">URL namespace</option>
+										<option value="6ba7b812-9dad-11d1-80b4-00c04fd430c8">OID namespace</option>
+										<option value="6ba7b814-9dad-11d1-80b4-00c04fd430c8">X.500 namespace</option>
+										<option value="custom">Custom namespace…</option>
+									</select>
+									<input
+										type="text"
+										id="nsCustom"
+										placeholder="Namespace UUID"
+										aria-label="Custom namespace UUID"
+										spellcheck="false"
+										autocomplete="off"
+										hidden />
+								</div>
+								<div class="input-row">
+									<input
+										type="text"
+										id="nameInput"
+										placeholder="Name, e.g. www.example.com"
+										aria-label="Name"
+										spellcheck="false"
+										autocomplete="off" />
+								</div>
+							</div>
+						</div>
+
+						<div class="block options">
+							<label class="opt count">
+								<span>Count</span>
+								<input type="number" id="count" min="1" max="1000" value="5" inputmode="numeric" />
+							</label>
+							<label class="opt"><input type="checkbox" id="optUpper" /> Uppercase</label>
+							<label class="opt"><input type="checkbox" id="optNoHyphen" /> No hyphens</label>
+							<label class="opt"><input type="checkbox" id="optBraces" /> Braces</label>
+						</div>
+
+						<div class="block">
+							<div class="field-label">
+								<span>Result</span>
+								<span id="resultMeta"></span>
+							</div>
+							<textarea
+								id="output"
+								readonly
+								rows="6"
+								spellcheck="false"
+								aria-label="Generated UUIDs"
+								aria-live="polite"></textarea>
+							<div class="status" id="status" role="status" aria-live="polite"></div>
+						</div>
+
+						<div class="actions">
+							<div class="btn-group">
+								<button type="button" class="act primary" id="genBtn">
+									<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+										<polyline points="23 4 23 10 17 10"></polyline>
+										<path d="M20.5 15a9 9 0 1 1-2.1-9.4L23 10"></path>
+									</svg>
+									Generate
+								</button>
+								<button type="button" class="act" id="clearBtn">
+									<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+										<polyline points="3 6 5 6 21 6"></polyline>
+										<path d="M19 6l-1 14H6L5 6"></path>
+										<path d="M10 11v6M14 11v6"></path>
+										<path d="M9 6V4h6v2"></path>
+									</svg>
+									Clear
+								</button>
+							</div>
+							<button type="button" class="act copy" id="copyBtn" disabled>
+								<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+									<rect x="9" y="9" width="13" height="13" rx="2"></rect>
+									<path
+										d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+								</svg>
+								<span id="copyLabel">Copy all</span>
+							</button>
+						</div>
+
+						<div class="block inspect">
+							<div class="section-title">Inspect a UUID</div>
+							<input
+								type="text"
+								id="inspectInput"
+								placeholder="Paste a UUID, e.g. 550e8400-e29b-41d4-a716-446655440000"
+								aria-label="UUID to inspect"
+								spellcheck="false"
+								autocomplete="off" />
+							<div class="status" id="inspectStatus" role="status" aria-live="polite"></div>
+							<dl class="grid" id="inspectGrid" hidden></dl>
+						</div>
+					</div>
+
+					<p class="footer-note">Nothing you generate ever leaves this page.</p>
+				</section>
+
+				<section class="seo-content">
+					<h2>UUID Generator</h2>
+
+					<p>
+						This free online UUID generator creates universally unique
+						identifiers (also called GUIDs) directly in your browser using the
+						Web Crypto random number generator. Generate up to 1,000 at a time,
+						format them as you need, and inspect any UUID to see its version,
+						variant and embedded timestamp. Nothing is sent to a server.
+					</p>
+
+					<h2>Which UUID version should I use?</h2>
+
+					<ul>
+						<li>
+							<strong>v4</strong> — 122 random bits. The common default for
+							request IDs, tokens and primary keys when ordering does not matter.
+						</li>
+						<li>
+							<strong>v7</strong> — starts with a Unix millisecond timestamp, so
+							values sort by creation time. Better than v4 for database primary
+							keys because inserts stay index-friendly.
+						</li>
+						<li>
+							<strong>v1</strong> — a 100-nanosecond timestamp plus a node ID.
+							This tool uses a random node ID rather than your MAC address, so
+							it does not reveal your hardware.
+						</li>
+						<li>
+							<strong>v5</strong> — a SHA-1 hash of a namespace and a name. The
+							same inputs always give the same UUID, which makes it useful for
+							stable, reproducible identifiers.
+						</li>
+						<li>
+							<strong>Nil and Max</strong> — the special all-zero and all-one
+							UUIDs, often used as placeholders.
+						</li>
+					</ul>
+
+					<h2>Are UUIDs unique and secure?</h2>
+
+					<p>
+						Random UUIDs are unique in practice: the chance of a v4 collision is
+						negligible. But a UUID is an identifier, not a secret. Do not use
+						v1, v5 or v7 as passwords or access tokens, since they contain
+						predictable parts. For secrets, use a dedicated random token of
+						sufficient length.
+					</p>
+
+					<h2>How to use the UUID generator</h2>
+
+					<ol>
+						<li>Choose a version and how many UUIDs you want.</li>
+						<li>
+							Pick a format: <strong>Uppercase</strong>, <strong>No hyphens</strong> or
+							<strong>Braces</strong>, e.g. <strong>{550E8400-…}</strong> for .NET.
+						</li>
+						<li>Click <strong>Generate</strong>, then <strong>Copy all</strong>.</li>
+					</ol>
+				</section>
+			</main>
+
+			<footer>
+				<span class="footer-copy"
+					>© <span id="year"></span> DevSecBox — developer &amp; security
+					utilities for everyday engineering work.</span
+				>
+				<div class="footer-links">
+					<a href="/about/">About</a>
+					<a href="/contact/">Contact</a>
+					<a href="/privacy/">Privacy Policy</a>
+					<a href="/terms/">Terms of Service</a>
+				</div>
+			</footer>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
