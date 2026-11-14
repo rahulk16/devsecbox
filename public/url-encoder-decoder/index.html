@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Google tag (gtag.js) -->
+		<script
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-H5M9YH4C1J"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+
+			gtag("config", "G-H5M9YH4C1J");
+		</script>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<title>URL Encoder &amp; Decoder Online - Percent Encoding Tool | DevSecBox</title>
+
+		<meta
+			name="description"
+			content="Free online URL encoder and decoder. Percent-encode or decode text, query strings and full URLs instantly, with UTF-8 support and a query parameter breakdown. Runs in your browser — nothing is uploaded." />
+
+		<meta
+			name="keywords"
+			content="URL encoder, URL decoder, percent encoding, URL encode, URL decode, encodeURIComponent, query string decoder, online URL tool" />
+
+		<meta name="robots" content="index, follow" />
+		<meta name="author" content="DevSecBox" />
+
+		<link rel="canonical" href="https://devsecbox.fyi/url-encoder-decoder/" />
+
+		<!-- Open Graph / social -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="DevSecBox" />
+		<meta
+			property="og:title"
+			content="URL Encoder &amp; Decoder Online - Percent Encoding Tool" />
+		<meta
+			property="og:description"
+			content="Percent-encode or decode text and URLs instantly. Runs entirely in your browser." />
+		<meta
+			property="og:url"
+			content="https://devsecbox.fyi/url-encoder-decoder/" />
+		<meta name="twitter:card" content="summary" />
+
+		<!-- Fonts: loaded with <link> (faster than CSS @import) -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			rel="stylesheet"
+			href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+
+		<link rel="stylesheet" href="../style.css" />
+		<link rel="stylesheet" href="style.css" />
+
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "WebApplication",
+				"name": "URL Encoder & Decoder",
+				"url": "https://devsecbox.fyi/url-encoder-decoder/",
+				"applicationCategory": "DeveloperApplication",
+				"operatingSystem": "Any (runs in the browser)",
+				"offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+			}
+		</script>
+	</head>
+
+	<body>
+		<div class="wrap">
+			<nav class="nav topnav">
+				<a href="/" class="brand">DevSecBox</a>
+				<a href="/" class="navlink">All tools</a>
+			</nav>
+
+			<main>
+				<section class="tool-section">
+					<div class="eyebrow">Text ⇄ %XX</div>
+					<h1>URL encoder / decoder</h1>
+					<p class="sub">
+						Percent-encode or decode text and URLs — everything runs locally in
+						your browser.
+					</p>
+
+					<div class="card">
+						<div class="mode-row" role="group" aria-label="Mode">
+							<button
+								type="button"
+								class="mode-btn active"
+								id="modeEncode"
+								aria-pressed="true">
+								Encode
+							</button>
+							<button
+								type="button"
+								class="mode-btn"
+								id="modeDecode"
+								aria-pressed="false">
+								Decode
+							</button>
+						</div>
+
+						<div class="options">
+							<label class="opt scope">
+								<span>Scope</span>
+								<select id="scope">
+									<option value="component">Component (encodes / ? &amp; = #)</option>
+									<option value="full">Full URL (keeps / ? &amp; = #)</option>
+								</select>
+							</label>
+							<label class="opt"
+								><input type="checkbox" id="optPlus" /> Space as +</label
+							>
+							<label class="opt" id="strictWrap"
+								><input type="checkbox" id="optStrict" /> Also encode
+								<code>! ' ( ) *</code></label
+							>
+						</div>
+
+						<div class="field">
+							<label class="field-label" for="input">
+								<span id="inputLabel">Text to encode</span>
+							</label>
+							<textarea
+								id="input"
+								placeholder="Enter text or a URL here…"
+								spellcheck="false"
+								autocomplete="off"
+								autocapitalize="off"></textarea>
+						</div>
+
+						<div class="field">
+							<div class="field-label">
+								<span id="outputLabel">Encoded result</span>
+							</div>
+							<div
+								class="output empty"
+								id="output"
+								tabindex="0"
+								role="region"
+								aria-live="polite"
+								aria-labelledby="outputLabel">
+								Result will appear here
+							</div>
+							<div class="status" id="status" role="status" aria-live="polite"></div>
+						</div>
+
+						<div class="actions">
+							<div class="btn-group">
+								<button type="button" class="act" id="swapBtn">
+									<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+										<polyline points="17 1 21 5 17 9"></polyline>
+										<path d="M3 11V9a4 4 0 0 1 4-4h14"></path>
+										<polyline points="7 23 3 19 7 15"></polyline>
+										<path d="M21 13v2a4 4 0 0 1-4 4H3"></path>
+									</svg>
+									Swap
+								</button>
+								<button type="button" class="act" id="clearBtn">
+									<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+										<polyline points="3 6 5 6 21 6"></polyline>
+										<path d="M19 6l-1 14H6L5 6"></path>
+										<path d="M10 11v6M14 11v6"></path>
+										<path d="M9 6V4h6v2"></path>
+									</svg>
+									Clear
+								</button>
+							</div>
+							<button type="button" class="act copy" id="copyBtn">
+								<svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+									<rect x="9" y="9" width="13" height="13" rx="2"></rect>
+									<path
+										d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+								</svg>
+								<span id="copyLabel">Copy</span>
+							</button>
+						</div>
+
+						<div class="params" id="params" hidden>
+							<div class="section-title">Query parameters</div>
+							<div class="table-wrap">
+								<table>
+									<thead>
+										<tr>
+											<th scope="col">#</th>
+											<th scope="col">Name</th>
+											<th scope="col">Value</th>
+										</tr>
+									</thead>
+									<tbody id="paramsBody"></tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div class="meta centered">
+						<span id="charCount">Characters: 0</span>
+						<span id="byteCount">Bytes: 0</span>
+					</div>
+
+					<p class="footer-note">Nothing you type ever leaves this page.</p>
+				</section>
+
+				<section class="seo-content">
+					<h2>URL Encoder and Decoder</h2>
+
+					<p>
+						This free online URL encoder and decoder converts text to and from
+						percent-encoding (also called URL encoding). Special characters
+						become a <strong>%</strong> followed by two hex digits, using UTF-8
+						for non-ASCII text, so the result is safe to put in a URL. Everything
+						is processed in your browser and nothing is uploaded.
+					</p>
+
+					<h2>What is URL encoding?</h2>
+
+					<p>
+						URLs can only contain a limited set of ASCII characters. Anything
+						else — spaces, quotes, accents, emoji, or characters that have a
+						special meaning such as <strong>&amp;</strong>, <strong>=</strong>
+						and <strong>#</strong> — has to be percent-encoded. A space becomes
+						<strong>%20</strong> and <strong>é</strong> becomes
+						<strong>%C3%A9</strong>.
+					</p>
+
+					<h2>Component or full URL?</h2>
+
+					<ul>
+						<li>
+							<strong>Component</strong> encodes everything except letters,
+							digits and <strong>- _ . ! ~ * ' ( )</strong>. Use it for a single
+							query value or path segment. It matches JavaScript's
+							<strong>encodeURIComponent</strong>.
+						</li>
+						<li>
+							<strong>Full URL</strong> leaves characters that structure a URL
+							(<strong>: / ? # &amp; = @</strong> and similar) alone, so an
+							entire address stays usable. It matches
+							<strong>encodeURI</strong>.
+						</li>
+					</ul>
+
+					<h2>Plus sign or %20 for spaces?</h2>
+
+					<p>
+						In query strings sent as HTML forms
+						(<strong>application/x-www-form-urlencoded</strong>), a space is
+						written as <strong>+</strong>. Everywhere else, including URL paths,
+						it must be <strong>%20</strong>. Turn on <strong>Space as +</strong>
+						when encoding form data, and when decoding a query string that uses
+						+ for spaces.
+					</p>
+
+					<h2>How to use the URL encoder and decoder</h2>
+
+					<ol>
+						<li>Choose <strong>Encode</strong> or <strong>Decode</strong>.</li>
+						<li>Pick a scope and any options that fit your use case.</li>
+						<li>Enter your text or URL; the result updates as you type.</li>
+						<li>
+							Click <strong>Copy</strong>, or <strong>Swap</strong> to feed the
+							result back in the opposite direction.
+						</li>
+					</ol>
+
+					<h2>Why does decoding say a sequence is malformed?</h2>
+
+					<p>
+						A <strong>%</strong> must be followed by two hex digits, and the
+						bytes must form valid UTF-8. When that is not the case, the tool
+						decodes what it can, leaves the rest unchanged and tells you.
+						Text that is still encoded after one pass was probably encoded
+						twice; run it through again to fully decode it.
+					</p>
+				</section>
+			</main>
+
+			<footer>
+				<span class="footer-copy"
+					>© <span id="year"></span> DevSecBox — developer &amp; security
+					utilities for everyday engineering work.</span
+				>
+				<div class="footer-links">
+					<a href="/about/">About</a>
+					<a href="/contact/">Contact</a>
+					<a href="/privacy/">Privacy Policy</a>
+					<a href="/terms/">Terms of Service</a>
+				</div>
+			</footer>
+		</div>
+		<script src="script.js"></script>
+	</body>
+</html>
